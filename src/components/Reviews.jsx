@@ -4,13 +4,20 @@ import ReviewCard from "./ReviewCard";
 import { getReviews } from "../utils/api";
 
 const Reviews = () => {
-    const [reviews, setReviews] = useState([])
+    const [reviews, setReviews] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        getReviews().then(reviewData => setReviews(reviewData));
+        setIsLoading(true);
+        getReviews().then(reviewData => { 
+            setReviews(reviewData);
+            setIsLoading(false);
+        } );
     }, [])
 
-    return (
+    return isLoading ?
+        <p>Loading Page...</p>
+        : (
         <main>
             <Nav />
             <ul className='reviews-list'>
