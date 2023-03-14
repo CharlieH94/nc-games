@@ -40,7 +40,7 @@ const CommentsList = ({ review_id }) => {
                                 <p className='comment-body'>{body}</p>
                                 <div className='comment-footer'>
                                     <p><em>{dateFormatter(created_at)}</em></p>
-                                    <p>Likes: {votes}</p>
+                                    <p><i className="fa-solid fa-thumbs-up"></i> {votes}</p>
                                 </div>
                             </li>
                         )
