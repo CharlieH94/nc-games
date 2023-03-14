@@ -21,20 +21,25 @@ const CommentsList = ({ review_id }) => {
         </div>
     )
         : (
-            <section>
-                <ul>
+            <section className='comments'>
+                <ul className='comments__list'>
                     <li>
-                        <CommentAdder review_id={review_id} />
+                        <CommentAdder review_id={review_id} setComments={setComments} />
                     </li>
                     {comments.map(comment => {
                         const { author, body, created_at, votes, comment_id } = comment;
                         return (
-                            <li>
-                                <p>{author}</p>
-                                <p>{body}</p>
-                                <p>posted at {created_at}</p>
-                                <p>Likes: {votes}</p>
-                                {/* {isOwner && <CommentDeleter review_id={review_id}/>} */}
+                            <li key={comment_id} className='comment-card'>
+                                <div className='comment-header'>
+                                    <p><strong>{author}</strong></p>
+                                    <CommentDeleter comment_id={comment_id} setComments={setComments} />
+                                    {/* {isOwner && <CommentDeleter review_id={review_id}/>} */}
+                                </div>
+                                <p className='comment-body'>{body}</p>
+                                <div className='comment-footer'>
+                                    <p><em>{Date(created_at).split(' G')[0]}</em></p>
+                                    <p>Likes: {votes}</p>
+                                </div>
                             </li>
                         )
                     })}

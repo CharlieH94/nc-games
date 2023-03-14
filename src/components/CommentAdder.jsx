@@ -1,8 +1,9 @@
 import { useState } from "react";
+import { postComment } from "../utils/api";
 
-const CommentAdder = ({review_id}) => {
+const CommentAdder = ({review_id, setComments}) => {
     const [newComment, setNewComment] = useState({
-        username: 'benKenobi',
+        username: 'jessjelly',
         body: ''
     });
 
@@ -13,15 +14,23 @@ const CommentAdder = ({review_id}) => {
     const onSubmit = (event) => {
         event.preventDefault();
         postComment(review_id, newComment).then(postedComment => {
-            return postedComment;
+            setComments((currentComments) => {
+                return [postedComment, ...currentComments]
+            })
+        })
+        setNewComment({
+            username: 'jessjelly',
+            body: ''
         })
     }
 
     return (
-        <form onSubmit={onSubmit}>
-            <label htmlFor='new-comment'>Comment:</label>
-            <input type='text' placeholder='Type comment...' id='new-comment' value={newComment} onChange={onChange} />
-            <button type='submit'>Post</button>
+        <form onSubmit={onSubmit} id='comment-adder'>
+            <label htmlFor='new-comment'><strong>Comment:</strong></label>
+            <div className='new-comment__container'>
+                <textarea type='text' placeholder='Type comment...' id='new-comment' value={newComment.body} onChange={onChange} />
+                <button type='submit'>Post</button>
+            </div>
         </form>
     )
 };

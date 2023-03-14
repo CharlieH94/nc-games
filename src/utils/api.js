@@ -20,7 +20,6 @@ export const getCommentsById = (review_id) => {
   if (review_id) path += `/${review_id}/comments`;
 
   return ncGamesAPI.get(path).then((response) => {
-    console.log(response)
     return response.data.comments;
   });
 };
@@ -28,8 +27,8 @@ export const getCommentsById = (review_id) => {
 export const postComment = (review_id, newComment) => {
   let path = `/reviews/${review_id}/comments`;
   
-  return ncGamesAPI.post(path, newComment).then(response => {
-    console.log(response.data.comment);
+  return ncGamesAPI.post(path, newComment).then(({data}) => {
+    return data.comment;
   });
 };
 
@@ -37,6 +36,6 @@ export const deleteCommentById = (comment_id) => {
   let path = `/comments/${comment_id}`;
   
   return ncGamesAPI.delete(path).then(response => {
-    console.log(response);
+    return response;
   });
 }
