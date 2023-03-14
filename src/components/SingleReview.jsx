@@ -8,7 +8,7 @@ const SingleReview = () => {
     const [review, setReview] = useState({});
     const [isLoading, setIsLoading] = useState(true);
     const { review_id } = useParams();
-    const { review_img_url, title, owner, category, review_body, votes, comment_count, created_at } = review;
+    const { review_img_url, title, owner, category, review_body, votes, created_at } = review;
 
     useEffect(() => {
         setIsLoading(true);
@@ -48,18 +48,15 @@ const SingleReview = () => {
                         <img src={review_img_url} alt={title} className='single-review__img'/>
                     </figure>
                     <figcaption>
+                        <p className='single-review__body'>{review_body}</p>
                         <h3 className='single-review__owner'>by {owner}</h3>
                         <h4><em>{category}</em></h4>
-                        <p className='single-review__body'>{review_body}</p>
-                    </figcaption>
-                    <div className='popularity-stats'>
-                        <p>Comment Count: {comment_count}</p>
                         <div className='votes-container'>
                             <p>Votes: {votes}</p>
                             <button id='like-btn' onClick={() => upVote(review_id)}><i className="fa-solid fa-thumbs-up"></i></button>
                             <button id='dislike-btn' onClick={() => upVote(review_id)}><i className="fa-solid fa-thumbs-down"></i></button>
                         </div>
-                    </div>
+                    </figcaption>
                 </section>
                 <CommentsList review_id={review_id} />
             </>     
