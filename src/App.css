@@ -153,7 +153,7 @@ form input {
 }
 
 .single-review__title {
-  padding: 1rem;
+  padding: 1rem 1rem 0 1rem;
   width: 100%;
 }
 
@@ -178,6 +178,26 @@ form input {
   display: flex;
   width: 80%;
   justify-content: space-evenly;
+}
+
+.votes-container {
+  display: flex;
+  align-items: center;
+}
+
+.votes-container p {
+  padding-right: 1rem;
+}
+
+#like-btn {
+  color: black;
+  padding: 0.3rem;
+  margin-right: 2rem;
+  border-radius: 10px;
+}
+
+.fa-thumbs-up {
+  font-size: 1.2rem;
 }
 
 @media only screen and (min-width: 768px) {
@@ -226,7 +246,7 @@ form input {
 .comments {
   width: 90vw;
   background-color: paleturquoise;
-  border-radius: 50px;
+  border-radius: 30px;
   padding: 1rem;
   margin-bottom: 1rem;
 }
@@ -271,7 +291,7 @@ form input {
 
 .comment-card {
   background-color: white;
-  border-radius: 10px;
+  border-radius: 15px;
   padding: 0.5rem;
 }
 
