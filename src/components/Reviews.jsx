@@ -22,7 +22,7 @@ const Reviews = () => {
             <Nav />
             <ul className='reviews-list'>
                 {reviews.map(review => {
-                    return <li key={review.created_at}><ReviewCard review={review} /></li>
+                    return <li key={review.title}><ReviewCard review={review} /></li>
                 })}
             </ul>
         </main>

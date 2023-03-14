@@ -36,13 +36,15 @@ h1 {
 /* ---------- Nav ---------- */
 nav {
   padding-bottom: 1rem;
+  display: flex;
+  justify-content: center;
 }
 
 nav ul {
   display: flex;
-  width: 90vw;
   justify-content: space-around;
   list-style: none;
+  width: 90vw;
 }
 
 /* ---------- Home Page ---------- */
@@ -96,16 +98,19 @@ form input {
 
 .review__img {
   width: 100%;
+  border-radius: 30px;
 }
 
 .review figcaption {
   width: 55%;
-  padding: 0 0.5rem;
+  padding: 0 0.5rem; 
+  color: black;
 }
 
 .review__title {
   font-size: 1rem;
   padding-bottom: 0.5rem;
+  text-decoration: none;
 }
 
 .review p {
@@ -138,8 +143,84 @@ form input {
   }
 }
 
+/* ---------- Single Review Page ---------- */
+.single-review {
+  padding: 0 1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+.single-review__title {
+  padding: 1rem;
+  width: 100%;
+}
 
+.single-review figure {
+  width: 100%;
+}
+
+.single-review__img {
+  width: 100%;
+  border-radius: 30px;
+}
+
+.single-review h3, h4 {
+  padding: 0.25rem;
+}
+
+.single-review p {
+  padding: 1rem 2rem;
+}
+
+.popularity-stats {
+  display: flex;
+  width: 80%;
+  justify-content: space-evenly;
+}
+
+@media only screen and (min-width: 768px) {
+  .single-review {
+    width: 80%;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+   .single-review {
+     width: 90vw;
+     flex-flow: row wrap;
+     padding: 1rem;
+   }
+
+   .single-review figure {
+    width: 40%;
+  }
+  
+  .single-review__img {
+    width: 100%;
+  }
+
+   .single-review figcaption {
+     width: 60%;
+     padding: 0 0.5rem;
+     display: flex;
+     flex-wrap: wrap-reverse;
+     align-items: center;
+   }
+
+   .single-review__owner {
+    margin: 0 3rem 0 2rem;
+   }
+   .single-review__body {
+    text-align: left;
+   }
+
+   .popularity-stats {
+    width: 35%;
+    justify-content: space-between;
+  }
+ }
 
 /* .App-logo {
   height: 40vmin;

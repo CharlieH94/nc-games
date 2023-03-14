@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Nav = () => {
     return (
         <nav className='selection'>
@@ -5,7 +7,9 @@ const Nav = () => {
                 <li>to</li>
                 <li>populate</li>
                 <li>later</li>
-                <li>Reviews</li>
+                <Link to='/reviews'>
+                    <li>Reviews</li>
+                </Link>
             </ul>
         </nav> 
     )
