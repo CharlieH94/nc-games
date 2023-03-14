@@ -21,7 +21,11 @@ const CommentsList = ({ review_id }) => {
         : (
             <section className='comments'>
                 <ul className='comments__list'>
-                    {comments.map(comment => {
+                    {comments.length === 0 ? (
+                     <p>Be the first to comment!</p>
+                    ) 
+                        : (
+                            comments.map(comment => {
                         const { author, body, created_at, votes, comment_id } = comment;
                         return (
                             <li key={comment_id} className='comment-card'>
@@ -35,7 +39,7 @@ const CommentsList = ({ review_id }) => {
                                 </div>
                             </li>
                         )
-                    })}
+                    }))}
                 </ul>
             </section>
         )
