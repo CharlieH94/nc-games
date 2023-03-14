@@ -10,7 +10,6 @@ const ncGamesAPI = axios.create({
       if (review_id) path += `/${review_id}`;
 
       return ncGamesAPI.get(path).then((response) => {
-        console.log(response)
         return review_id ? response.data.review : response.data.reviews;
     });
   };
