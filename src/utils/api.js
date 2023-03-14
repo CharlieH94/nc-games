@@ -39,3 +39,10 @@ export const deleteCommentById = (comment_id) => {
     return response;
   });
 }
+
+
+export const getCategories = () => {
+  return ncGamesAPI.get('/categories').then(({data}) => {
+    return data.categories;
+  })
+}

@@ -8,7 +8,7 @@ const SingleReview = () => {
     const [review, setReview] = useState({});
     const [isLoading, setIsLoading] = useState(true);
     const { review_id } = useParams();
-    const { review_img_url, title, owner, category, review_body, votes, comment_count, created_at } = review;
+    const { review_img_url, title, owner, category, review_body, votes, comment_count} = review;
 
     useEffect(() => {
         setIsLoading(true);
