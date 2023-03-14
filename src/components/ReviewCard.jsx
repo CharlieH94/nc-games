@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const ReviewCard = ({ review: {review_id, title, designer, owner, review_img_url, category, created_at, votes } }) => {
+const ReviewCard = ({ review: {review_id, title, comment_count, owner, review_img_url, category, created_at, votes } }) => {
     return (
         <Link to={`/reviews/${review_id}`} style={{ textDecoration:'none' }}>
             <section className='review'>
@@ -10,7 +10,10 @@ const ReviewCard = ({ review: {review_id, title, designer, owner, review_img_url
                 <figcaption>
                     <h2 className='review__title'>{title}</h2>
                     <p>by {owner}</p>
-                    <p>Votes: {votes}</p>
+                    <div className='review-stats'>
+                        <p>Comments: {comment_count}</p>
+                        <p>Votes: {votes}</p>
+                    </div>
                 </figcaption>
             </section>
         </Link>

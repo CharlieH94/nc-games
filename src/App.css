@@ -109,12 +109,20 @@ form input {
 
 .review__title {
   font-size: 1rem;
-  padding-bottom: 0.5rem;
+  /* padding-bottom: 0.5rem; */
   text-decoration: none;
 }
 
 .review p {
-  padding: 0.25rem;
+  padding: 0.25rem ;
+}
+
+.review-stats {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  font-size: smaller;
+  margin: 0 auto;
 }
 
 @media only screen and (min-width: 768px) {
