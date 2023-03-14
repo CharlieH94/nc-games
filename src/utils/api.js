@@ -11,5 +11,28 @@ export const getReviews = () => {
 };
 
 export const getCommentsById = (review_id) => {
-  return ncGamesAPI.get("/")
+  let path = '/reviews';
+
+  if (review_id) path += `/${review_id}/comments`;
+
+  return ncGamesAPI.get(path).then((response) => {
+    console.log(response)
+    return response.data.comments;
+  });
+};
+
+export const postComment = (review_id, newComment) => {
+  let path = `/reviews/${review_id}/comments`;
+  
+  return ncGamesAPI.post(path, newComment).then(response => {
+    console.log(response.data.comment);
+  });
+};
+
+export const deleteCommentById = (comment_id) => {
+  let path = `/comments/${comment_id}`;
+  
+  return ncGamesAPI.delete(path).then(response => {
+    console.log(response);
+  });
 }

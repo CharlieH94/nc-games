@@ -1,3 +1,16 @@
+@font-face {
+  font-family: 'Aniron';
+  src: url('/public/custom-font/Aniron-Bold.eot');
+  src: url('/public/custom-font/Aniron-Bold.eot?#iefix') format('embedded-opentype'),
+      url('/public/custom-font/Aniron-Bold.woff2') format('woff2'),
+      url('/public/custom-font/Aniron-Bold.woff') format('woff'),
+      url('/public/custom-font/Aniron-Bold.ttf') format('truetype'),
+      url('/public/custom-font/Aniron-Bold.svg#Aniron-Bold') format('svg');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -14,6 +27,10 @@
 /* ---------- Header ---------- */
 header {
   padding: 1rem;
+}
+
+h1 {
+  font-family: 'Aniron'
 }
 
 /* ---------- Nav ---------- */
