@@ -4,8 +4,12 @@ const ncGamesAPI = axios.create({
     baseURL: "https://be-nc-games-project.onrender.com/api",
   });
   
-  export const getReviews = () => {
-    return ncGamesAPI.get("/reviews").then((response) => {
-      return response.data.reviews;
-    });
-  };
+export const getReviews = () => {
+  return ncGamesAPI.get("/reviews").then((response) => {
+    return response.data.reviews;
+  });
+};
+
+export const getCommentsById = (review_id) => {
+  return ncGamesAPI.get("/")
+}
