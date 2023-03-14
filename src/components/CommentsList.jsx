@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getCommentsById } from "../utils/api";
+import { dateFormatter } from "./SingleReview";
 
 const CommentsList = ({ review_id }) => {
     const [comments, setComments] = useState([]);
@@ -34,7 +35,7 @@ const CommentsList = ({ review_id }) => {
                                 </div>
                                 <p className='comment-body'>{body}</p>
                                 <div className='comment-footer'>
-                                    <p><em>{Date(created_at).split(' G')[0]}</em></p>
+                                    <p><em>{dateFormatter(created_at)}</em></p>
                                     <p>Likes: {votes}</p>
                                 </div>
                             </li>
