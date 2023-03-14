@@ -186,17 +186,24 @@ form input {
 }
 
 .votes-container p {
-  padding-right: 1rem;
+  padding: 0.5rem;
 }
 
 #like-btn {
+  color: black;
+  padding: 0.3rem;
+  margin-right: 1rem;
+  border-radius: 10px;
+}
+
+#dislike-btn {
   color: black;
   padding: 0.3rem;
   margin-right: 2rem;
   border-radius: 10px;
 }
 
-.fa-thumbs-up {
+.fa-thumbs-up, .fa-thumbs-down {
   font-size: 1.2rem;
 }
 

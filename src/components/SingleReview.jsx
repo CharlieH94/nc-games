@@ -18,6 +18,7 @@ const SingleReview = () => {
         })
     }, [review_id])
 
+    
     const upVote = (review_id) => {
         setReview((currentReview) => {
             return {...currentReview, votes: votes + 1}
@@ -56,6 +57,7 @@ const SingleReview = () => {
                         <div className='votes-container'>
                             <p>Votes: {votes}</p>
                             <button id='like-btn' onClick={() => upVote(review_id)}><i className="fa-solid fa-thumbs-up"></i></button>
+                            <button id='dislike-btn' onClick={() => upVote(review_id)}><i className="fa-solid fa-thumbs-down"></i></button>
                         </div>
                     </div>
                 </section>
@@ -69,6 +71,7 @@ export default SingleReview;
 export const dateFormatter = (created_at) => {
     const splitDate = created_at.split('T');
     const firstHalf = splitDate[0].split('-').reverse().join('-');
-    const secondHalf = splitDate[1].split('.')[0];
+    const secondHalf = splitDate[1].split('.')[0].slice(0, -3);
+
     return `${firstHalf} ${secondHalf}`
 }

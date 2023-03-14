@@ -13,15 +13,20 @@ const CommentAdder = ({review_id, setComments}) => {
 
     const onSubmit = (event) => {
         event.preventDefault();
-        postComment(review_id, newComment).then(postedComment => {
-            setComments((currentComments) => {
-                return [postedComment, ...currentComments]
+        if (newComment.body !== '') {
+            postComment(review_id, newComment).then(postedComment => {
+                setComments((currentComments) => {
+                    return [postedComment, ...currentComments]
+                })
+            }).catch(error => {
+                if(error) alert('Post unsuccessful')
             })
-        })
-        setNewComment({
-            username: 'jessjelly',
-            body: ''
-        })
+            setNewComment({
+                username: 'jessjelly',
+                body: ''
+            })
+        }
+       else alert('Please enter comment to post')
     }
 
     return (
