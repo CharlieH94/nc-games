@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getReviews } from "../utils/api";
 import Nav from "./Nav";
+import CommentsList from "./CommentsList";
 
 const SingleReview = () => {
     const [review, setReview] = useState({});
@@ -41,6 +42,7 @@ const SingleReview = () => {
                             <p>Votes: {votes}</p>
                         </div>
                 </section>
+                <CommentsList review_id={review_id} />
             </>     
     )
 };

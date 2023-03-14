@@ -1,3 +1,16 @@
+@font-face {
+  font-family: 'Aniron';
+  src: url('/public/custom-font/Aniron-Bold.eot');
+  src: url('/public/custom-font/Aniron-Bold.eot?#iefix') format('embedded-opentype'),
+      url('/public/custom-font/Aniron-Bold.woff2') format('woff2'),
+      url('/public/custom-font/Aniron-Bold.woff') format('woff'),
+      url('/public/custom-font/Aniron-Bold.ttf') format('truetype'),
+      url('/public/custom-font/Aniron-Bold.svg#Aniron-Bold') format('svg');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -14,6 +27,10 @@
 /* ---------- Header ---------- */
 header {
   padding: 1rem;
+}
+
+h1 {
+  font-family: 'Aniron'
 }
 
 /* ---------- Nav ---------- */
@@ -204,6 +221,84 @@ form input {
     justify-content: space-between;
   }
  }
+
+ /* ---------- Comments ---------- */
+.comments {
+  width: 90vw;
+  background-color: paleturquoise;
+  border-radius: 50px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.comments__list {
+  list-style: none;
+}
+
+.comments__list li {
+  margin: 0 0 0.5rem 0;
+
+}
+
+#comment-adder{
+  width: 100%;
+  margin: auto auto;
+}
+
+.new-comment__container {
+  display: flex;
+  margin: 0.25rem 0 0.5rem 0;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.new-comment__container textarea {
+  height: 2.2rem;
+  padding: 0.5rem;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.new-comment__container button {
+  padding: 0.5rem;
+  border-radius: 8px;
+}
+
+#new-comment {
+  margin: 0 0.5rem 0 0;
+}
+
+.comment-card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 0.5rem;
+}
+
+.comment-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.comment-body {
+  text-align: left;
+  padding: 0.25rem 0;
+}
+
+.comment-footer{
+  display: flex;
+  justify-content: space-between;
+}
+
+#delete-form {
+  width: fit-content;
+}
+
+#delete-form__btn {
+  width: 1.2rem;
+  text-align: center;
+  line-height: 1.2;
+}
 
 /* .App-logo {
   height: 40vmin;
