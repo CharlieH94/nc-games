@@ -30,4 +30,12 @@ export const patchReviewById = (review_id) => {
   return ncGamesAPI.patch(path, body).then(response => {
     return response.data.review;
   });
-}
+};
+
+export const postComment = (review_id, newComment) => {
+  let path = `/reviews/${review_id}/comments`;
+  
+  return ncGamesAPI.post(path, newComment).then(({data}) => {
+    return data.comment;
+  });
+};

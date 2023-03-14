@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getCommentsById } from "../utils/api";
 import { dateFormatter } from "./SingleReview";
+import CommentAdder from "./CommentAdder";
 
 const CommentsList = ({ review_id }) => {
     const [comments, setComments] = useState([]);
@@ -22,6 +23,9 @@ const CommentsList = ({ review_id }) => {
         : (
             <section className='comments'>
                 <ul className='comments__list'>
+                    <li>
+                        <CommentAdder review_id={review_id} setComments={setComments} />
+                    </li>
                     {comments.length === 0 ? (
                      <p>Be the first to comment!</p>
                     ) 
