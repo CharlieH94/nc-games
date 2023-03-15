@@ -21,8 +21,8 @@ const CommentAdder = ({review_id, setComments}) => {
                     return [postedComment, ...currentComments]
                 })
             }).then(() => toast.success('Comment posted'))
-                .catch(error => {
-                if(error) toast.error('Comment post  unsuccessful')
+            .catch(error => {
+                if(error) toast.error('Comment post unsuccessful')
             })
             setNewComment({
                 username: 'jessjelly',
@@ -34,7 +34,7 @@ const CommentAdder = ({review_id, setComments}) => {
 
     return (
         <form onSubmit={onSubmit} id='comment-adder'>
-            <label htmlFor='new-comment'><strong>Comment:</strong></label>
+            <label htmlFor='new-comment'><strong>Comments:</strong></label>
             <div className='new-comment__container'>
                 <textarea type='text' placeholder='Type comment...' id='new-comment' value={newComment.body} onChange={onChange} />
                 <button type='submit'>Post</button>
