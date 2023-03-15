@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { postComment } from "../utils/api";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const CommentAdder = ({review_id, setComments}) => {
     const [newComment, setNewComment] = useState({
@@ -18,15 +20,16 @@ const CommentAdder = ({review_id, setComments}) => {
                 setComments((currentComments) => {
                     return [postedComment, ...currentComments]
                 })
-            }).catch(error => {
-                if(error) alert('Post unsuccessful')
+            }).then(() => toast.success('Comment posted'))
+                .catch(error => {
+                if(error) toast.error('Comment post  unsuccessful')
             })
             setNewComment({
                 username: 'jessjelly',
                 body: ''
             })
         }
-       else alert('Please enter comment to post')
+       else toast.warn('Please enter a comment to post')
     }
 
     return (
@@ -36,6 +39,7 @@ const CommentAdder = ({review_id, setComments}) => {
                 <textarea type='text' placeholder='Type comment...' id='new-comment' value={newComment.body} onChange={onChange} />
                 <button type='submit'>Post</button>
             </div>
+            <ToastContainer theme='colored'/>
         </form>
     )
 };
