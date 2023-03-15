@@ -26,7 +26,7 @@ const SingleReview = () => {
                 setLiked(true);
                 return {...currentReview, votes: votes + 1}
             })
-            patchReviewById(review_id).catch(() => {
+            patchReviewById(review_id, 1).catch(() => {
                 setLiked(false);
                 setReview(currentReview => {
                     return { ...currentReview, votes: votes - 1 };
@@ -41,7 +41,7 @@ const SingleReview = () => {
                 setLiked(false);
                 return {...currentReview, votes: votes - 1}
             })
-            patchReviewById(review_id).catch(() => {
+            patchReviewById(review_id, -1).catch(() => {
                 setLiked(true);
                 setReview(currentReview => {
                     return { ...currentReview, votes: votes + 1 };

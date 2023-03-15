@@ -24,9 +24,9 @@ export const getCommentsById = (review_id) => {
   });
 };
 
-export const patchReviewById = (review_id) => {
+export const patchReviewById = (review_id, voteChange) => {
   let path = `/reviews/${review_id}`;
-  const body = {inc_votes: 1}
+  const body = {inc_votes: voteChange}
   return ncGamesAPI.patch(path, body).then(response => {
     return response.data.review;
   });
