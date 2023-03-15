@@ -28,6 +28,14 @@ export const getCommentsById = (review_id) => {
   });
 };
 
+export const patchReviewById = (review_id, voteChange) => {
+  let path = `/reviews/${review_id}`;
+  const body = {inc_votes: voteChange}
+  return ncGamesAPI.patch(path, body).then(response => {
+    return response.data.review;
+  });
+};
+
 export const postComment = (review_id, newComment) => {
   let path = `/reviews/${review_id}/comments`;
   
@@ -35,15 +43,6 @@ export const postComment = (review_id, newComment) => {
     return data.comment;
   });
 };
-
-export const deleteCommentById = (comment_id) => {
-  let path = `/comments/${comment_id}`;
-  
-  return ncGamesAPI.delete(path).then(response => {
-    return response;
-  });
-}
-
 
 export const getCategories = () => {
   return ncGamesAPI.get('/categories').then(({data}) => {
