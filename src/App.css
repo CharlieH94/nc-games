@@ -43,7 +43,7 @@ h1 {
 }
 
 /* ---------- Nav ---------- */
-nav {
+.selection {
   padding-bottom: 1rem;
   display: flex;
   justify-content: center;

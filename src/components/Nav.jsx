@@ -5,15 +5,19 @@ import { getCategories } from "../utils/api";
 
 const Nav = () => {
     const [categories, setCategories] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         getCategories().then(categoriesData => {
             const populatedCategories = categoriesData.map(category => category.slug)
             setCategories(populatedCategories);
+            setIsLoading(false);
         }) 
     }, [])
 
-    return (
+    return isLoading ?
+            <p className='selection'>Loading Navigation...</p>
+        : (
         <nav className='selection'>
             <ul>
                 <Link to='/reviews' key='reviews' style={{ textDecoration: 'none' }}>
