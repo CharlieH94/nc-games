@@ -17,7 +17,7 @@ const Nav = () => {
         <nav className='selection'>
             <ul>
                 {categories.map(category => {
-                    const path = `/${category}/reviews`;
+                    const path = `/reviews?category=${category}`;
                     return (
                         <Link to={path} key={category}>
                             <li>{category}</li>
