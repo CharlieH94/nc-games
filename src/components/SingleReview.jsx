@@ -37,7 +37,7 @@ const SingleReview = () => {
                 setLiked(false);
                 return {...currentReview, votes: votes - 1}
             })
-            patchReviewById(review_id, 1).catch(() => {
+            patchReviewById(review_id, -1).catch(() => {
                 setLiked(true);
                 setReview(currentReview => {
                     return { ...currentReview, votes: votes + 1 };
