@@ -10,20 +10,25 @@ const Reviews = () => {
     const [searchParams, setSearchParams] = useSearchParams();
 
     const sort_by = searchParams.get('sort_by')
-    const category = searchParams.get('category')
+    // const category = searchParams.get('category')
 
-    const params = {sort_by, category};
+    // const params = {sort_by, category};
+    
+    const userSelectedCategory = searchParams.get('category')
 
     useEffect(() => {
         setIsLoading(true);
-        getReviews().then(reviewData => { 
-            setReviews(reviewData);
+        getReviews(null, userSelectedCategory).then(reviewData => {
+            setReviews(reviewData)
             setIsLoading(false);
         } );
-    }, [])
+    }, [userSelectedCategory])
 
-    return isLoading ?
-        <p>Loading Page...</p>
+    return isLoading ? (
+        <>
+            <Nav />
+            <p>Loading Page...</p>
+        </>)
         : (
         <main>
             <Nav />
