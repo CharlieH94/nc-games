@@ -2,10 +2,17 @@ import { useEffect, useState } from "react";
 import Nav from "./Nav";
 import ReviewCard from "./ReviewCard";
 import { getReviews } from "../utils/api";
+import { useSearchParams } from "react-router-dom";
 
 const Reviews = () => {
     const [reviews, setReviews] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [searchParams, setSearchParams] = useSearchParams();
+
+    const sort_by = searchParams.get('sort_by')
+    const category = searchParams.get('category')
+
+    const params = {sort_by, category};
 
     useEffect(() => {
         setIsLoading(true);
