@@ -8,16 +8,16 @@ const Reviews = () => {
     const [reviews, setReviews] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [searchParams, setSearchParams] = useSearchParams();
+    const [sortBySelection, setSortBySelection] = useState('created_at');
     const [sortByCommentCount, setSortByCommentCount] = useState(false);
-    const [sortBySelection, setSortBySelection] = useState(null);
-    const [orderSelection, setOrderSelection] = useState(null);
+    const [orderSelection, setOrderSelection] = useState('desc');
 
     const userSelectedCategory = searchParams.get('category')
-    const userSelectedSortBy = searchParams.get('sort_by')
-    const userSelectedOrder = searchParams.get('order')
+    // const userSelectedSortBy = searchParams.get('sort_by')
+    // const userSelectedOrder = searchParams.get('order')
 
-    const params = {category: userSelectedCategory, sort_by: userSelectedSortBy, order: userSelectedOrder};
-    
+    const params = {category: userSelectedCategory, sort_by: sortBySelection, order: orderSelection};
+
     useEffect(() => {
         setIsLoading(true);
         getReviews(null, params).then(reviewData => {
@@ -27,24 +27,42 @@ const Reviews = () => {
     }, [userSelectedCategory])
 
 
+
     const onSubmit = (event) => {
         event.preventDefault();
+        console.log(sortBySelection)
+        console.log(orderSelection)
+        setIsLoading(true);
+        getReviews(null, params).then(reviewData => {
+            if (sortByCommentCount) {
+                setSortBySelection('comment_count')
+                let sortedReviewsByCount;
+                orderSelection === 'desc' ? sortedReviewsByCount = [...reviewData].sort((a, b) => b.comment_count - a.comment_count)
+                : sortedReviewsByCount = [...reviewData].sort((a, b) => a.comment_count - b.comment_count)                
+                setReviews(sortedReviewsByCount);
+            } else {
+                setReviews(reviewData)
+            }
+            setIsLoading(false);
+            setSortBySelection('created_at');
+            setOrderSelection('desc');
+            setSortByCommentCount(false);
+        } );
     }
 
     const onChange = (event) => {
         const query = event.target.id;
         const option = event.target.value;
-        console.log(option);
         
-        if (query === 'sort_by') {
+        if (query === 'sort-by') {
             if (option === 'Comment Count') setSortByCommentCount(true);
-            else if (option === 'Date') setSortBySelection('');
-            else if (option === 'Votes') setSortBySelection('');
+            else if (option === 'Date') setSortBySelection('created_at');
+            else if (option === 'Votes') setSortBySelection('votes');
         }
         
         if (query === 'order-by') {
-            if (option === 'Ascending') return;
-            else if (option === 'Descending') return;
+            if (option === 'Ascending') setOrderSelection('asc');
+            else if (option === 'Descending') setOrderSelection('desc');
         }
     }
 
@@ -58,15 +76,15 @@ const Reviews = () => {
             <Nav />
                 <ul className='reviews-list'>
                 <form id='organise-input' onSubmit={onSubmit}>
-                <div id='sort-input'>
-                    <label>Sort By: </label>
-                    <select name="" id='sort-by' onChange={onChange} defaultValue="default">
-                        <option value="default" key="no-select" disabled>Select sort option</option>
-                        <option key='date'>Date</option>
-                        <option>Votes</option>
-                        <option>Comment Count</option>
-                    </select>
-                </div>
+                    <div id='sort-input'>
+                        <label>Sort By: </label>
+                        <select name="" id='sort-by' onChange={onChange} defaultValue="default">
+                            <option value="default" key="no-select" disabled>Select sort option</option>
+                            <option>Date</option>
+                            <option>Votes</option>
+                            <option>Comment Count</option>
+                        </select>
+                    </div>
                     <div id='order-input'>
                     <label>Order: </label>
                     <select name="" id='order-by' onChange={onChange} defaultValue="default">
@@ -74,8 +92,9 @@ const Reviews = () => {
                         <option>Ascending</option>
                         <option>Descending</option>
                     </select>
-                </div>
-            </form>
+                    </div>
+                    <button type='submit' id='sort-btn'>Sort</button>
+                </form>
                 {reviews.map(review => {
                     return <li key={review.title}><ReviewCard review={review} /></li>
                 })}

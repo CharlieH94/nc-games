@@ -118,8 +118,15 @@ form input {
   /* max-width: 550px; */
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
+  margin: 0 0 0.5rem 0;
+  text-align: left;
 }
+
+#sort-btn {
+  align-self: flex-end;
+}
+
 
 @media only screen and (min-width: 480px) {
   #organise-input {
@@ -127,7 +134,7 @@ form input {
   }
 
   #order-input {
-    margin-left: 2rem;
+    margin: 0 1rem;
   }
 }
 
