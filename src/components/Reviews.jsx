@@ -19,8 +19,11 @@ const Reviews = () => {
         } );
     }, [userSelectedCategory])
 
-    return isLoading ?
-        <p>Loading Page...</p>
+    return isLoading ? (
+        <>
+            <Nav />
+            <p>Loading Page...</p>
+        </>)
         : (
         <main>
             <Nav />

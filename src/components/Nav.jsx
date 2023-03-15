@@ -16,17 +16,17 @@ const Nav = () => {
     return (
         <nav className='selection'>
             <ul>
+                <Link to='/reviews' key='reviews' style={{ textDecoration: 'none' }}>
+                    <li id='all-reviews'>All Reviews</li>
+                </Link>
                 {categories.map(category => {
                     const path = `/reviews?category=${category}`;
                     return (
-                        <Link to={path} key={category}>
+                        <Link to={path} key={category} style={{ textDecoration: 'none' }}>
                             <li>{category}</li>
                         </Link>
                     )
-                })}
-                <Link to='/reviews' key='reviews'>
-                    <li >Reviews</li>
-                </Link>
+                })} 
             </ul>
         </nav> 
     )
