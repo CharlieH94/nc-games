@@ -32,16 +32,12 @@ const SingleReview = () => {
                     return { ...currentReview, votes: votes - 1 };
                 })
             });
-        }
-    }
-    
-    const downVote = (review_id) => {
-        if (liked) {
+        } else if (liked) {
             setReview((currentReview) => {
                 setLiked(false);
                 return {...currentReview, votes: votes - 1}
             })
-            patchReviewById(review_id, -1).catch(() => {
+            patchReviewById(review_id, 1).catch(() => {
                 setLiked(true);
                 setReview(currentReview => {
                     return { ...currentReview, votes: votes + 1 };
@@ -49,6 +45,21 @@ const SingleReview = () => {
             });
         }
     }
+    
+    // const downVote = (review_id) => {
+    //     if (liked) {
+    //         setReview((currentReview) => {
+    //             setLiked(false);
+    //             return {...currentReview, votes: votes - 1}
+    //         })
+    //         patchReviewById(review_id, -1).catch(() => {
+    //             setLiked(true);
+    //             setReview(currentReview => {
+    //                 return { ...currentReview, votes: votes + 1 };
+    //             })
+    //         });
+    //     }
+    // }
 
     return isLoading ? (
         <div>
@@ -73,8 +84,8 @@ const SingleReview = () => {
                         <h4><em>{category}</em></h4>
                         <div className='votes-container'>
                             <p>Votes: {votes}</p>
-                            <button id='like-btn' onClick={() => upVote(review_id)} disabled={liked}><i className="fa-solid fa-thumbs-up"></i></button>
-                            <button id='dislike-btn' onClick={() => downVote(review_id)} disabled={!liked}><i className="fa-solid fa-thumbs-down"></i></button>
+                            <button id='like-btn' style={{color: liked ? 'green' : 'black'}} onClick={() => upVote(review_id)} ><i className="fa-solid fa-thumbs-up"></i></button>
+                            {/* <button id='dislike-btn' onClick={() => downVote(review_id)} disabled={!liked}><i className="fa-solid fa-thumbs-down"></i></button> */}
                         </div>
                     </figcaption>
                 </section>
