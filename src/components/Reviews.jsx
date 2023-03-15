@@ -2,21 +2,28 @@ import { useEffect, useState } from "react";
 import Nav from "./Nav";
 import ReviewCard from "./ReviewCard";
 import { getReviews } from "../utils/api";
+import { useSearchParams } from "react-router-dom";
 
 const Reviews = () => {
     const [reviews, setReviews] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [searchParams, setSearchParams] = useSearchParams();
+    
+    const userSelectedCategory = searchParams.get('category')
 
     useEffect(() => {
         setIsLoading(true);
-        getReviews().then(reviewData => { 
-            setReviews(reviewData);
+        getReviews(null, userSelectedCategory).then(reviewData => {
+            setReviews(reviewData)
             setIsLoading(false);
         } );
-    }, [])
+    }, [userSelectedCategory])
 
-    return isLoading ?
-        <p>Loading Page...</p>
+    return isLoading ? (
+        <>
+            <Nav />
+            <p>Loading Page...</p>
+        </>)
         : (
         <main>
             <Nav />

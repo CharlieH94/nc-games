@@ -1,15 +1,36 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { getCategories } from "../utils/api";
+
 
 const Nav = () => {
-    return (
+    const [categories, setCategories] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        getCategories().then(categoriesData => {
+            const populatedCategories = categoriesData.map(category => category.slug)
+            setCategories(populatedCategories);
+            setIsLoading(false);
+        }) 
+    }, [])
+
+    return isLoading ?
+            <p className='selection'>Loading Navigation...</p>
+        : (
         <nav className='selection'>
             <ul>
-                <li>to</li>
-                <li>populate</li>
-                <li>later</li>
-                <Link to='/reviews'>
-                    <li>Reviews</li>
+                <Link to='/reviews' key='reviews' style={{ textDecoration: 'none' }}>
+                    <li id='all-reviews'>All Reviews</li>
                 </Link>
+                {categories.map(category => {
+                    const path = `/reviews?category=${category}`;
+                    return (
+                        <Link to={path} key={category} style={{ textDecoration: 'none' }}>
+                            <li>{category}</li>
+                        </Link>
+                    )
+                })} 
             </ul>
         </nav> 
     )

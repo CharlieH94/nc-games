@@ -43,7 +43,7 @@ h1 {
 }
 
 /* ---------- Nav ---------- */
-nav {
+.selection {
   padding-bottom: 1rem;
   display: flex;
   justify-content: center;
@@ -51,9 +51,36 @@ nav {
 
 nav ul {
   display: flex;
-  justify-content: space-around;
+  flex-wrap: wrap;
   list-style: none;
-  width: 90vw;
+  width: 100%;
+  padding: 0 0.5rem;
+  justify-content: space-between;
+}
+
+
+.selection li {
+  margin: 0.5rem;
+  padding: 0.5rem;
+  width: 40vw;  
+  background-color: #D1CAB1;
+  border-radius: 10px;
+}
+
+#all-reviews {
+  background-color: paleturquoise;
+}
+
+@media only screen and (min-width: 768px) {
+  .selection li {
+    width: 20vw;
+  }
+}
+
+@media only screen and (min-width: 1295px) {
+  .selection li {
+    width: 10vw;
+  }
 }
 
 /* ---------- Home Page ---------- */
