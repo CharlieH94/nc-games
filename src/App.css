@@ -17,6 +17,10 @@
   box-sizing: border-box;
 }
 
+/* body {
+  background-color: #8D9375;
+} */
+
 .App {
   text-align: center;
   display: flex;
@@ -30,7 +34,12 @@ header {
 }
 
 h1 {
-  font-family: 'Aniron'
+  font-family: 'Aniron';
+  /* color: #885D36;
+  text-shadow: 2px 0 2px #D1CAB1,
+  -2px 0 2px #D1CAB1,
+  0 -2px 2px #D1CAB1,
+  0 2px 2px #D1CAB1; */
 }
 
 /* ---------- Nav ---------- */
