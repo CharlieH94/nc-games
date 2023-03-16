@@ -146,7 +146,7 @@ form input {
   text-align: left;
 }
 
-#sort-by {
+#sort-by, #order-by {
   color: black;
 }
 
@@ -154,6 +154,9 @@ form input {
   align-self: flex-end;
   color: black;
   background-color: #EEF0EE;
+  border-radius: 10px;
+  padding: 0.14rem 0.5rem;
+  border: none;
 }
 
 
