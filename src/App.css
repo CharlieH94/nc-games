@@ -17,9 +17,13 @@
   box-sizing: border-box;
 }
 
-/* body {
-  background-color: #8D9375;
-} */
+body {
+  background-color: #1E2B29;
+}
+
+body p, h2, h3, label {
+  color: #EEF0EE
+}
 
 .App {
   text-align: center;
@@ -35,11 +39,11 @@ header {
 
 h1 {
   font-family: 'Aniron';
-  /* color: #885D36;
+  color: #885D36;
   text-shadow: 2px 0 2px #D1CAB1,
   -2px 0 2px #D1CAB1,
   0 -2px 2px #D1CAB1,
-  0 2px 2px #D1CAB1; */
+  0 2px 2px #D1CAB1;
 }
 
 @media only screen and (min-width: 768px) {
@@ -73,10 +77,11 @@ nav ul {
   width: 40vw;  
   background-color: #D1CAB1;
   border-radius: 10px;
+  color: #1E2B29
 }
 
 #all-reviews {
-  background-color: paleturquoise;
+  background-color: #9BB59C;
 }
 
 @media only screen and (min-width: 768px) {
@@ -92,11 +97,6 @@ nav ul {
 }
 
 /* ---------- Home Page ---------- */
-/* .selection button {
-  width: 30vw;
-  margin: 3vw;
-  padding: 1rem;
-} */
 
 form h2 {
   font-size: 1.25rem;
@@ -118,6 +118,12 @@ form input {
   width: 35vw;
   padding: 1rem;
   margin: 2rem;
+  border-radius: 50px;
+  color: #1E2B29;
+}
+
+.start-btn:hover:enabled {
+    background-color: #D1CAB1;
 }
 
 /* ---------- Sort Input ---------- */
@@ -270,6 +276,10 @@ form input {
   border-radius: 10px;
 }
 
+.single-review__category {
+  color: #9bb59c;
+}
+
 /* #dislike-btn {
   color: black;
   padding: 0.3rem;
@@ -326,7 +336,7 @@ form input {
  /* ---------- Comments ---------- */
 .comments {
   width: 90vw;
-  background-color: paleturquoise;
+  background-color: #D1CAB1;
   border-radius: 30px;
   padding: 1rem;
   margin-bottom: 1rem;
@@ -338,7 +348,6 @@ form input {
 
 .comments__list li {
   margin: 0 0 0.5rem 0;
-
 }
 
 #comment-adder{
@@ -348,6 +357,7 @@ form input {
 
 #comment-adder label {
   margin-bottom: 0.5rem;
+  color: #1E2B29;
 }
 
 .new-comment__container {
@@ -360,6 +370,7 @@ form input {
 
 .comment-login {
   margin: 0.25rem 0 0.5rem 0;
+  color: #1E2B29;
 }
 
 .new-comment__container textarea {
@@ -389,9 +400,17 @@ form input {
   justify-content: space-between;
 }
 
+.comment-header p, .comment-footer i {
+  color: #1E2B29;
+}
+
 .comment-body {
   text-align: left;
   padding: 0.25rem 0;
+}
+
+.comment-body, .comment-footer p {
+  color: #898878;
 }
 
 .comment-footer{

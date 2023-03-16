@@ -23,7 +23,7 @@ const Login = () => {
             <label htmlFor='username'>Username: </label>
             <input type="text" id='username' value={loggedInUser} onChange={onChange} /> <br/>
             <label htmlFor='password' >Password: </label>
-            <input type="text" id='password' value={password} onChange={onChange}/>
+            <input id='password' value={password} onChange={onChange} type='password'/>
             <Link to='/Reviews'>
                 <button className='start-btn' disabled={!user.authorised}>Enter a different realm...</button>
             </Link>
