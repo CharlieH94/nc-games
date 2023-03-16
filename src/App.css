@@ -77,11 +77,15 @@ nav ul {
   width: 40vw;  
   background-color: #D1CAB1;
   border-radius: 10px;
-  color: #1E2B29
+  color: #1E2B29;
+  transition: ease-out 0.1s;
 }
 
 .selection li:hover {
-  background-color:#9BB59C
+  background-color:#9BB59C;
+  scale: 1.1;
+  border: 1px solid #1E2B29;
+  box-shadow: 0 0 20px #D1CAB1
 }
 
 #selected {
@@ -404,7 +408,7 @@ form input {
   justify-content: space-between;
 }
 
-.comment-header p, .comment-footer i {
+.comment-header p,.comment-body, .comment-footer i {
   color: #1E2B29;
 }
 
@@ -413,7 +417,7 @@ form input {
   padding: 0.25rem 0;
 }
 
-.comment-body, .comment-footer p {
+.comment-footer p {
   color: #898878;
 }
 
