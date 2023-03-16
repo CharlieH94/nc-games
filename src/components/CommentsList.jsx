@@ -37,7 +37,7 @@ const CommentsList = ({ review_id }) => {
                             <li key={comment_id} className='comment-card'>
                                 <div className='comment-header'>
                                     <p><strong>{author}</strong></p>
-                                    <CommentDeleter comment_id={comment_id} setComments={setComments} />
+                                    <CommentDeleter comment={comment} setComments={setComments} />
                                     {/* {isOwner && <CommentDeleter review_id={review_id}/>} */}
                                 </div>
                                 <p className='comment-body'>{body}</p>

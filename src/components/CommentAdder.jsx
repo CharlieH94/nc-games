@@ -2,10 +2,14 @@ import { useState } from "react";
 import { postComment } from "../utils/api";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useContext } from 'react';
+import { UserContext } from '../contexts/User';
 
-const CommentAdder = ({review_id, setComments}) => {
+const CommentAdder = ({ review_id, setComments }) => {
+    const { user } = useContext(UserContext)
+
     const [newComment, setNewComment] = useState({
-        username: 'jessjelly',
+        username: user.username,
         body: ''
     });
 
