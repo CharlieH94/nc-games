@@ -13,8 +13,6 @@ const Reviews = () => {
     const [orderSelection, setOrderSelection] = useState('desc');
 
     const userSelectedCategory = searchParams.get('category')
-    // const userSelectedSortBy = searchParams.get('sort_by')
-    // const userSelectedOrder = searchParams.get('order')
 
     const params = {category: userSelectedCategory, sort_by: sortBySelection, order: orderSelection};
 
@@ -30,8 +28,6 @@ const Reviews = () => {
 
     const onSubmit = (event) => {
         event.preventDefault();
-        console.log(sortBySelection)
-        console.log(orderSelection)
         setIsLoading(true);
         getReviews(null, params).then(reviewData => {
             if (sortByCommentCount) {
