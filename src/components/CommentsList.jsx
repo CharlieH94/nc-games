@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getCommentsById } from "../utils/api";
 import { dateFormatter } from "./SingleReview";
 import CommentAdder from "./CommentAdder";
+import CommentDeleter from "./CommentDeleter";
 
 const CommentsList = ({ review_id }) => {
     const [comments, setComments] = useState([]);
@@ -36,6 +37,8 @@ const CommentsList = ({ review_id }) => {
                             <li key={comment_id} className='comment-card'>
                                 <div className='comment-header'>
                                     <p><strong>{author}</strong></p>
+                                    <CommentDeleter comment_id={comment_id} setComments={setComments} />
+                                    {/* {isOwner && <CommentDeleter review_id={review_id}/>} */}
                                 </div>
                                 <p className='comment-body'>{body}</p>
                                 <div className='comment-footer'>
