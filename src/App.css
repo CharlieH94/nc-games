@@ -80,7 +80,11 @@ nav ul {
   color: #1E2B29
 }
 
-#all-reviews {
+.selection li:hover {
+  background-color:#9BB59C
+}
+
+#selected {
   background-color: #9BB59C;
 }
 
