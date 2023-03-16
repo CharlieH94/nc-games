@@ -77,7 +77,7 @@ const Reviews = () => {
                 <ul className='reviews-list'>
                 <form id='organise-input' onSubmit={onSubmit}>
                     <div id='sort-input'>
-                        <label>Sort By: </label>
+                        <label>Sort By </label>
                         <select name="" id='sort-by' onChange={onChange} defaultValue="default">
                             <option value="default" key="no-select" disabled>Select sort option</option>
                             <option>Date</option>
@@ -86,7 +86,7 @@ const Reviews = () => {
                         </select>
                     </div>
                     <div id='order-input'>
-                    <label>Order: </label>
+                    <label>Order </label>
                     <select name="" id='order-by' onChange={onChange} defaultValue="default">
                         <option value="default" key="no-select" disabled>Select order</option>
                         <option>Ascending</option>

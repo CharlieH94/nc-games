@@ -146,8 +146,14 @@ form input {
   text-align: left;
 }
 
+#sort-by {
+  color: black;
+}
+
 #sort-btn {
   align-self: flex-end;
+  color: black;
+  background-color: #EEF0EE;
 }
 
 
