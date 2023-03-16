@@ -42,6 +42,14 @@ h1 {
   0 2px 2px #D1CAB1; */
 }
 
+@media only screen and (min-width: 768px) {
+  #login-name {
+    position: absolute;
+    right: 2rem;
+    top: 2.5rem;
+  }
+}
+
 /* ---------- Nav ---------- */
 .selection {
   padding-bottom: 1rem;

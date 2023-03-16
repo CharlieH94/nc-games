@@ -45,3 +45,11 @@ export const getCategories = () => {
     return data.categories;
   })
 }
+
+export const deleteCommentById = (comment_id) => {
+  let path = `/comments/${comment_id}`;
+  
+  return ncGamesAPI.delete(path).then(response => {
+    return response;
+  });
+}
