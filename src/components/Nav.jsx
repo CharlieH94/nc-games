@@ -23,11 +23,14 @@ const Nav = () => {
                 <Link to='/reviews' key='reviews' style={{ textDecoration: 'none' }}>
                     <li id='all-reviews'>All Reviews</li>
                 </Link>
-                {categories.map(category => {
+                    {categories.map(category => {
+                        const navCat = category.split('-').map(word => {
+                            return word[0].toUpperCase() + word.slice(1);
+                    }).join(' ')
                     const path = `/reviews?category=${category}`;
                     return (
                         <Link to={path} key={category} style={{ textDecoration: 'none' }}>
-                            <li>{category}</li>
+                            <li>{navCat}</li>
                         </Link>
                     )
                 })} 

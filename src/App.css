@@ -112,6 +112,32 @@ form input {
   margin: 2rem;
 }
 
+/* ---------- Sort Input ---------- */
+#organise-input {
+  width: 100%;
+  /* max-width: 550px; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 0 0 0.5rem 0;
+  text-align: left;
+}
+
+#sort-btn {
+  align-self: flex-end;
+}
+
+
+@media only screen and (min-width: 480px) {
+  #organise-input {
+    justify-content: flex-end;
+  }
+
+  #order-input {
+    margin: 0 1rem;
+  }
+}
+
 /* ---------- Reviews Page ---------- */
 .reviews-list {
   list-style: none;
