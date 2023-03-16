@@ -358,6 +358,10 @@ form input {
   align-items: center;
 }
 
+.comment-login {
+  margin: 0.25rem 0 0.5rem 0;
+}
+
 .new-comment__container textarea {
   height: 2.2rem;
   padding: 0.5rem;
