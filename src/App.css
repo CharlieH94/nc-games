@@ -19,6 +19,7 @@
 
 body {
   background-color: #1E2B29;
+  padding-bottom: 1rem;
 }
 
 body p, h2, h3, label {
@@ -77,7 +78,7 @@ nav ul {
   width: 40vw;  
   background-color: #D1CAB1;
   border-radius: 10px;
-  color: #1E2B29;
+  color: rgb(29, 29, 29);
   transition: ease-out 0.1s;
 }
 
@@ -166,6 +167,15 @@ form input {
   padding: 0 1rem;
   display: flex;
   flex-direction: column;
+}
+
+.review:hover {
+  background-color: #EEF0EE;
+  border-radius: 30px;
+}
+
+.review:hover p, .review:hover h2 {
+  color:#1E2B29;
 }
 
 .review {

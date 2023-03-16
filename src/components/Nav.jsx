@@ -7,10 +7,7 @@ const Nav = () => {
     const [categories, setCategories] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [params, setParams] = useSearchParams();
-    // const [navSelection, setNavSelection] = useState(null);
-
     const navOption = params.get('category');
-    // if (navOption !== navSelection) setNavSelection(navOption);
 
     useEffect(() => {
         getCategories().then(categoriesData => {
