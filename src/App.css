@@ -159,6 +159,11 @@ form input {
   border: none;
 }
 
+#sort-btn:active {
+  box-shadow: 0 3px black;
+  transform: translateY(1px);
+}
+
 
 @media only screen and (min-width: 480px) {
   #organise-input {
