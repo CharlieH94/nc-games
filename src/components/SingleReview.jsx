@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getReviews, patchReviewById } from "../utils/api";
 import Nav from "./Nav";
@@ -86,7 +86,7 @@ const SingleReview = () => {
                     <figcaption>
                         <p className='single-review__body'>{review_body}</p>
                         <h3 className='single-review__owner'>by {owner}</h3>
-                        <h4><em>{category}</em></h4>
+                        <h4><Link to={`/reviews?category=${category}`}><em>{category}</em></Link></h4>
                         <div className='votes-container'>
                             <p>Votes: {votes}</p>
                             <button id='like-btn' style={{color: liked ? 'green' : 'black'}} onClick={() => upVote(review_id)} ><i className="fa-solid fa-thumbs-up"></i></button>
