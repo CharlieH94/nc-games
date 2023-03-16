@@ -3,8 +3,9 @@ import { getCommentsById } from "../utils/api";
 import { dateFormatter } from "./SingleReview";
 import CommentAdder from "./CommentAdder";
 import CommentDeleter from "./CommentDeleter";
+import ErrorPage from "./ErrorPage";
 
-const CommentsList = ({ review_id }) => {
+const CommentsList = ({ review_id, error, setError }) => {
     const [comments, setComments] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -13,8 +14,10 @@ const CommentsList = ({ review_id }) => {
         getCommentsById(review_id).then(commentsData => {
             setComments(commentsData);
             setIsLoading(false);
-        })
+        }).catch(err => setError(err));
     }, [review_id])
+
+    if (error) return <ErrorPage error={error.message}/>
 
     return isLoading ? (
         <div>
@@ -38,7 +41,6 @@ const CommentsList = ({ review_id }) => {
                                 <div className='comment-header'>
                                     <p><strong>{author}</strong></p>
                                     <CommentDeleter comment={comment} setComments={setComments} />
-                                    {/* {isOwner && <CommentDeleter review_id={review_id}/>} */}
                                 </div>
                                 <p className='comment-body'>{body}</p>
                                 <div className='comment-footer'>

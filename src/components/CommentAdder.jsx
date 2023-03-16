@@ -29,7 +29,7 @@ const CommentAdder = ({ review_id, setComments }) => {
                 if(error) toast.error('Comment post unsuccessful')
             })
             setNewComment({
-                username: 'jessjelly',
+                username: user.username,
                 body: ''
             })
         }

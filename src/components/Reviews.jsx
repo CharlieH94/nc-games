@@ -3,6 +3,7 @@ import Nav from "./Nav";
 import ReviewCard from "./ReviewCard";
 import { getReviews } from "../utils/api";
 import { useSearchParams } from "react-router-dom";
+import ErrorPage from "./ErrorPage";
 
 const Reviews = () => {
     const [reviews, setReviews] = useState([]);
@@ -11,6 +12,7 @@ const Reviews = () => {
     const [sortBySelection, setSortBySelection] = useState('created_at');
     const [sortByCommentCount, setSortByCommentCount] = useState(false);
     const [orderSelection, setOrderSelection] = useState('desc');
+    const [error, setError] = useState(null);
 
     const userSelectedCategory = searchParams.get('category')
 
@@ -21,7 +23,7 @@ const Reviews = () => {
         getReviews(null, params).then(reviewData => {
             setReviews(reviewData)
             setIsLoading(false);
-        } );
+        } ).catch(err => setError(err));
     }, [userSelectedCategory])
 
 
@@ -61,6 +63,8 @@ const Reviews = () => {
             else if (option === 'Descending') setOrderSelection('desc');
         }
     }
+
+    if (error) return <ErrorPage error={error.message}/>
 
     return isLoading ? (
         <>

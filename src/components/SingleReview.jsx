@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { getReviews, patchReviewById } from "../utils/api";
 import Nav from "./Nav";
 import CommentsList from "./CommentsList";
+import ErrorPage from "./ErrorPage";
 
 const SingleReview = () => {
     const [review, setReview] = useState({});
@@ -10,13 +11,14 @@ const SingleReview = () => {
     const { review_id } = useParams();
     const { review_img_url, title, owner, category, review_body, votes, created_at } = review;
     const [liked, setLiked] = useState(false);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         setIsLoading(true);
         getReviews(+review_id).then(reviewData => {
             setReview(reviewData);
             setIsLoading(false);
-        })
+        }).catch(err => setError(err));
     }, [review_id])
 
     
@@ -31,7 +33,7 @@ const SingleReview = () => {
                 setReview(currentReview => {
                     return { ...currentReview, votes: votes - 1 };
                 })
-            });
+            }).catch(err => setError(err));;
         } else if (liked) {
             setReview((currentReview) => {
                 setLiked(false);
@@ -42,7 +44,7 @@ const SingleReview = () => {
                 setReview(currentReview => {
                     return { ...currentReview, votes: votes + 1 };
                 })
-            });
+            }).catch(err => setError(err));;
         }
     }
     
@@ -60,6 +62,9 @@ const SingleReview = () => {
     //         });
     //     }
     // }
+
+
+    if (error) return <ErrorPage error={error.message}/>
 
     return isLoading ? (
         <div>
@@ -89,7 +94,7 @@ const SingleReview = () => {
                         </div>
                     </figcaption>
                 </section>
-                <CommentsList review_id={review_id} />
+                <CommentsList review_id={review_id} error={error} setError={setError} />
             </>     
     )
 };
@@ -97,9 +102,11 @@ const SingleReview = () => {
 export default SingleReview;
 
 export const dateFormatter = (created_at) => {
-    const splitDate = created_at.split('T');
-    const firstHalf = splitDate[0].split('-').reverse().join('-');
-    const secondHalf = splitDate[1].split('.')[0].slice(0, -3);
-
-    return `${firstHalf} ${secondHalf}`
+    if (created_at !== undefined) {
+        const splitDate = created_at.split('T');
+        const firstHalf = splitDate[0].split('-').reverse().join('-');
+        const secondHalf = splitDate[1].split('.')[0].slice(0, -3);
+    
+        return `${firstHalf} ${secondHalf}`
+    }
 }

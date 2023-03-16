@@ -405,6 +405,13 @@ form input {
   line-height: 1.2;
 }
 
+/* ---------- Comments ---------- */
+#error-msg {
+  padding: 2rem;
+}
+
+
+
 /* .App-logo {
   height: 40vmin;
   pointer-events: none;
