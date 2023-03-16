@@ -6,6 +6,7 @@ import Login from './components/Login';
 import Reviews from './components/Reviews'
 import { useContext } from 'react';
 import { UserContext } from './contexts/User';
+import ErrorPage from './components/ErrorPage';
 
 function App() {
   const { user } = useContext(UserContext)
@@ -16,6 +17,7 @@ function App() {
         <Route path='/' element={<Login />} />
         <Route path='/reviews' element={<Reviews />} />
         <Route path='/reviews/:review_id' element={<SingleReview />} />
+        <Route path='/*' element={<ErrorPage/>} />
       </Routes>
     </div>
   );
