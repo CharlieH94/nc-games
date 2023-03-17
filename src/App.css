@@ -42,10 +42,15 @@ h1 {
   font-size: 2.75rem;
   font-family: 'Aniron';
   color: #885D36;
-  text-shadow: 2px 0 2px #D1CAB1,
-  -2px 0 2px #D1CAB1,
-  0 -2px 2px #D1CAB1,
-  0 2px 2px #D1CAB1;
+  text-shadow: 
+  0.5px 0 #281000,
+  -0.5px 0  #281000,
+  0 -0.5px  #281000,
+  0 0.5px  #281000,
+  4px 0 4px #D1CAB1,
+  -4px 0 4px #D1CAB1,
+  0 -4px 4px #D1CAB1,
+  0 4px 4px #D1CAB1;
 }
 
 .user {
