@@ -316,7 +316,7 @@ form input {
 #like-btn {
   color: black;
   padding: 0.3rem;
-  /* margin-right: 0.5rem; */
+  margin-right: 0.5rem;
   border-radius: 10px;
 }
 
@@ -324,11 +324,11 @@ form input {
   color: #9bb59c;
 }
 
-/* #dislike-btn {
+#dislike-btn {
   color: black;
   padding: 0.3rem;
   border-radius: 10px;
-} */
+}
 
 .fa-thumbs-up, .fa-thumbs-down {
   font-size: 1.2rem;

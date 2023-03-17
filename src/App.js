@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import './App.css';
 import SingleReview from './components/SingleReview';
 import Header from './components/Header';
@@ -11,12 +11,12 @@ import Nav from './components/Nav';
 
 function App() {
   const { user } = useContext(UserContext)
-   
+  let location = useLocation();
 
   return (
     <div className="App">
       <Header user={user} />
-      {window.location.pathname !== '/' && <Nav/>}
+      {location.pathname !== '/' && <Nav/>}
       <Routes>
         <Route path='/?' element={<Login />} />
         <Route path='/reviews' element={<Reviews />} />

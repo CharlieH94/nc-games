@@ -12,6 +12,7 @@ const SingleReview = () => {
     const { review_id } = useParams();
     const { review_img_url, title, owner, category, review_body, votes, created_at } = review;
     const [liked, setLiked] = useState(false);
+    const [disliked, setDisliked] = useState(false);
     const [error, setError] = useState(null);
     const { user } = useContext(UserContext)
 
@@ -51,7 +52,7 @@ const SingleReview = () => {
         }
     }
     
-    // const downVote = (review_id) => {
+    const downVote = (review_id) => {
     //     if (liked) {
     //         setReview((currentReview) => {
     //             setLiked(false);
@@ -64,7 +65,7 @@ const SingleReview = () => {
     //             })
     //         });
     //     }
-    // }
+    }
 
 
     if (error) return <ErrorPage error={error.message}/>
@@ -87,7 +88,7 @@ const SingleReview = () => {
                         <div className='votes-container'>
                             <p>Votes: {votes}</p>
                             <button id='like-btn' style={{color: liked ? 'green' : 'black'}} onClick={() => upVote(review_id)} disabled={!user.authorised}><i className="fa-solid fa-thumbs-up"></i></button>
-                            {/* <button id='dislike-btn' onClick={() => downVote(review_id)} disabled={!liked}><i className="fa-solid fa-thumbs-down"></i></button> */}
+                            <button id='dislike-btn' style={{color: disliked ? 'red' : 'black'}}onClick={() => downVote(review_id)} disabled={!user.authorised}><i className="fa-solid fa-thumbs-down"></i></button>
                         </div>
                     </figcaption>
                 </section>
