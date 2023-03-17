@@ -39,13 +39,13 @@ const CommentAdder = ({ review_id, setComments }) => {
 
     return (
         <form onSubmit={onSubmit} id='comment-adder'>
-            <label htmlFor='new-comment'><strong>Comments:</strong></label>
+            <label htmlFor='new-comment'><strong>Comments</strong></label>
             {user.authorised ? 
                 <div className='new-comment__container'>
                 <textarea type='text' placeholder='Type comment...' id='new-comment' value={newComment.body} onChange={onChange} />
                 <button type='submit'>Post</button>
                 </div>
-                : <p className='comment-login'><Link to='/'>Log in</Link> to comment!</p>
+                : <p className='comment-login'><Link to='/'>Log in</Link> to comment or vote!</p>
             }
             <ToastContainer theme='colored'/>
         </form>
