@@ -28,10 +28,10 @@ const Login = () => {
 
     return (
         <form>
-            <h2>Login:</h2>
-            <label htmlFor='username'>Username: </label>
+            <h2>Login</h2>
+            <label htmlFor='username'>Username</label>
             <input type="text" id='username' value={loggedInUser} onChange={onChange} /> <br/>
-            <label htmlFor='password' >Password: </label>
+            <label htmlFor='password' >Password</label>
             <input id='password' value={password} onChange={onChange} type='password'/>
             <button className='start-btn' disabled={isDisabled} onClick={onClick}>Enter a different realm...</button>
         </form>
