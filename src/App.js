@@ -7,12 +7,16 @@ import Reviews from './components/Reviews'
 import { useContext } from 'react';
 import { UserContext } from './contexts/User';
 import ErrorPage from './components/ErrorPage';
+import Nav from './components/Nav';
 
 function App() {
   const { user } = useContext(UserContext)
+   
+
   return (
     <div className="App">
       <Header user={user} />
+      {window.location.pathname !== '/' && <Nav/>}
       <Routes>
         <Route path='/' element={<Login />} />
         <Route path='/reviews' element={<Reviews />} />

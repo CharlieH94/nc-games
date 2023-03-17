@@ -1,9 +1,10 @@
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getReviews, patchReviewById } from "../utils/api";
-import Nav from "./Nav";
 import CommentsList from "./CommentsList";
 import ErrorPage from "./ErrorPage";
+import { useContext } from 'react';
+import { UserContext } from '../contexts/User';
 
 const SingleReview = () => {
     const [review, setReview] = useState({});
@@ -12,6 +13,8 @@ const SingleReview = () => {
     const { review_img_url, title, owner, category, review_body, votes, created_at } = review;
     const [liked, setLiked] = useState(false);
     const [error, setError] = useState(null);
+    const { user } = useContext(UserContext)
+
 
     useEffect(() => {
         setIsLoading(true);
@@ -66,15 +69,9 @@ const SingleReview = () => {
 
     if (error) return <ErrorPage error={error.message}/>
 
-    return isLoading ? (
-        <div>
-            <Nav />
-            <p>Loading Review...</p>
-        </div>
-    )
+    return isLoading ? <p>Loading Review...</p>
         :  (
             <>
-                <Nav />
                 <section className='single-review'> 
                     <header className='single-review__title'>
                         <h2>{title}</h2>
@@ -89,7 +86,7 @@ const SingleReview = () => {
                         <Link to={`/reviews?category=${category}`} className='single-review__category'><em><h4 >{category}</h4></em></Link>
                         <div className='votes-container'>
                             <p>Votes: {votes}</p>
-                            <button id='like-btn' style={{color: liked ? 'green' : 'black'}} onClick={() => upVote(review_id)} ><i className="fa-solid fa-thumbs-up"></i></button>
+                            <button id='like-btn' style={{color: liked ? 'green' : 'black'}} onClick={() => upVote(review_id)} disabled={!user.authorised}><i className="fa-solid fa-thumbs-up"></i></button>
                             {/* <button id='dislike-btn' onClick={() => downVote(review_id)} disabled={!liked}><i className="fa-solid fa-thumbs-down"></i></button> */}
                         </div>
                     </figcaption>
