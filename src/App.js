@@ -18,7 +18,7 @@ function App() {
       <Header user={user} />
       {window.location.pathname !== '/' && <Nav/>}
       <Routes>
-        <Route path='/' element={<Login />} />
+        <Route path='/?' element={<Login />} />
         <Route path='/reviews' element={<Reviews />} />
         <Route path='/reviews/:review_id' element={<SingleReview />} />
         <Route path='/*' element={<ErrorPage/>} />
