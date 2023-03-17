@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 
 const Login = () => {
     const { user, setUser } = useContext(UserContext)
-    const [loggedInUser, setLoggedInUser] = useState('');
-    const [password, setPassword] = useState('');
+    const [loggedInUser, setLoggedInUser] = useState('jessjelly');
+    const [password, setPassword] = useState('iAmGroot');
     const [isDisabled, setIsDisabled] = useState(true)
     
     const navigate = useNavigate();
@@ -14,11 +14,12 @@ const Login = () => {
         const field = event.target.id;
         if (field === 'username') setLoggedInUser(event.target.value);
         if (field === 'password') setPassword(event.target.value);
+        if (!isDisabled) setIsDisabled(true);
     }
 
     if (isDisabled && loggedInUser === 'jessjelly' && password === 'iAmGroot') {
         setIsDisabled(false);
-    } 
+    }
 
     const onClick = (event) => {
         event.preventDefault();
