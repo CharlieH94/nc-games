@@ -27,7 +27,21 @@ const SingleReview = () => {
 
     
     const upVote = (review_id) => {
-        if (!liked) {
+        if (disliked) {
+            setReview((currentReview) => {
+                setDisliked(false);
+                setLiked(false)
+                return {...currentReview, votes: votes + 1}
+            })
+            patchReviewById(review_id, 1).catch(() => {
+                setDisliked(true);
+                setReview(currentReview => {
+                    return { ...currentReview, votes: votes - 1 };
+                })
+            }).catch(err => setError(err));
+            
+        } 
+        else if (!disliked) {
             setReview((currentReview) => {
                 setLiked(true);
                 return {...currentReview, votes: votes + 1}
@@ -37,10 +51,15 @@ const SingleReview = () => {
                 setReview(currentReview => {
                     return { ...currentReview, votes: votes - 1 };
                 })
-            }).catch(err => setError(err));;
-        } else if (liked) {
+            }).catch(err => setError(err));
+        }      
+    }
+    
+    const downVote = (review_id) => {
+        if (liked) {
             setReview((currentReview) => {
-                setLiked(false);
+                setDisliked(false);
+                setLiked(false)
                 return {...currentReview, votes: votes - 1}
             })
             patchReviewById(review_id, -1).catch(() => {
@@ -48,27 +67,30 @@ const SingleReview = () => {
                 setReview(currentReview => {
                     return { ...currentReview, votes: votes + 1 };
                 })
-            }).catch(err => setError(err));;
-        }
-    }
-    
-    const downVote = (review_id) => {
-    //     if (liked) {
-    //         setReview((currentReview) => {
-    //             setLiked(false);
-    //             return {...currentReview, votes: votes - 1}
-    //         })
-    //         patchReviewById(review_id, -1).catch(() => {
-    //             setLiked(true);
-    //             setReview(currentReview => {
-    //                 return { ...currentReview, votes: votes + 1 };
-    //             })
-    //         });
-    //     }
+            }).catch(err => setError(err));
+        } 
+        else if (!liked) {
+            setReview((currentReview) => {
+                setDisliked(true);
+                return {...currentReview, votes: votes - 1}
+            })
+            patchReviewById(review_id, -1).catch(() => {
+                setDisliked(false);
+                setReview(currentReview => {
+                    return { ...currentReview, votes: votes + 1 };
+                })
+            }).catch(err => setError(err));
+        }    
     }
 
 
     if (error) return <ErrorPage error={error.message}/>
+
+    let likedColor;
+    if (liked & user.authorised) likedColor = 'green';
+
+    let dislikedColor;
+    if (disliked & user.authorised) dislikedColor = 'red';
 
     return isLoading ? <p>Loading Review...</p>
         :  (
@@ -87,8 +109,8 @@ const SingleReview = () => {
                         <Link to={`/reviews?category=${category}`} className='single-review__category'><em><h4 >{category}</h4></em></Link>
                         <div className='votes-container'>
                             <p>Votes: {votes}</p>
-                            <button id='like-btn' style={{color: liked ? 'green' : 'black'}} onClick={() => upVote(review_id)} disabled={!user.authorised}><i className="fa-solid fa-thumbs-up"></i></button>
-                            <button id='dislike-btn' style={{color: disliked ? 'red' : 'black'}}onClick={() => downVote(review_id)} disabled={!user.authorised}><i className="fa-solid fa-thumbs-down"></i></button>
+                            <button id='like-btn' style={{backgroundColor: likedColor}} onClick={() => upVote(review_id)} disabled={!user.authorised || liked}><i className="fa-solid fa-thumbs-up"></i></button>
+                            <button id='dislike-btn' style={{backgroundColor: dislikedColor}}onClick={() => downVote(review_id)} disabled={!user.authorised || disliked}><i className="fa-solid fa-thumbs-down"></i></button>
                         </div>
                     </figcaption>
                 </section>
