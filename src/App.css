@@ -85,12 +85,18 @@ nav ul {
 .selection li:hover {
   background-color:#9BB59C;
   scale: 1.1;
-  border: 1px solid #1E2B29;
-  box-shadow: 0 0 20px #D1CAB1
+  border: 2px solid white;
+  box-shadow: 0 0 20px #D1CAB1;
 }
 
 #selected {
   background-color: #9BB59C;
+  border: 2px white solid;
+}
+
+#selected:hover {
+  scale: none;
+  box-shadow: none;
 }
 
 @media only screen and (min-width: 768px) {
@@ -105,7 +111,7 @@ nav ul {
   }
 }
 
-/* ---------- Home Page ---------- */
+/* ---------- Login Page ---------- */
 
 form h2 {
   font-size: 1.25rem;
@@ -133,6 +139,12 @@ form input {
 
 .start-btn:hover:enabled {
     background-color: #D1CAB1;
+}
+
+@media only screen and (min-width: 768px) {
+  form input, .start-btn {
+    width: 12rem;
+  }
 }
 
 /* ---------- Sort Input ---------- */
