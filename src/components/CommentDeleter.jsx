@@ -29,7 +29,7 @@ const CommentDeleter = ({comment: {comment_id, author}, setComments }) => {
 
     const canDelete = user.username === author ? true : false;
     
-    if (canDelete) {
+    if (canDelete && user.authorised) {
         return (
             <form onSubmit={onSubmit}id='delete-form'>
                 <button type='submit' id='delete-form__btn' disabled={isDisabled}>x</button>
