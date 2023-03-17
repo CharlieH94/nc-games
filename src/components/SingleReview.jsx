@@ -1,7 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getReviews, patchReviewById } from "../utils/api";
-import Nav from "./Nav";
 import CommentsList from "./CommentsList";
 import ErrorPage from "./ErrorPage";
 
@@ -66,15 +65,9 @@ const SingleReview = () => {
 
     if (error) return <ErrorPage error={error.message}/>
 
-    return isLoading ? (
-        <div>
-            <Nav />
-            <p>Loading Review...</p>
-        </div>
-    )
+    return isLoading ? <p>Loading Review...</p>
         :  (
             <>
-                <Nav />
                 <section className='single-review'> 
                     <header className='single-review__title'>
                         <h2>{title}</h2>

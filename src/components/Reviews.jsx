@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import Nav from "./Nav";
 import ReviewCard from "./ReviewCard";
 import { getReviews } from "../utils/api";
 import { useSearchParams } from "react-router-dom";
@@ -66,14 +65,9 @@ const Reviews = () => {
 
     if (error) return <ErrorPage error={error.message}/>
 
-    return isLoading ? (
-        <>
-            <Nav />
-            <p>Loading Page...</p>
-        </>)
+    return isLoading ? <p>Loading Page...</p>
         : (
         <main>
-            <Nav />
                 <ul className='reviews-list'>
                 <form id='organise-input' onSubmit={onSubmit}>
                     <div id='sort-input'>
