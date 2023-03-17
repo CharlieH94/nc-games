@@ -6,7 +6,7 @@ import { getCategories } from "../utils/api";
 const Nav = () => {
     const [categories, setCategories] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    const [params, setParams] = useSearchParams();
+    const [params] = useSearchParams();
     const navOption = params.get('category');
 
     useEffect(() => {

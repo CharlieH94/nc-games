@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import ReviewCard from "./ReviewCard";
 import { getReviews } from "../utils/api";
 import { useSearchParams } from "react-router-dom";
@@ -7,7 +7,7 @@ import ErrorPage from "./ErrorPage";
 const Reviews = () => {
     const [reviews, setReviews] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    const [searchParams, setSearchParams] = useSearchParams();
+    const [searchParams] = useSearchParams();
     const [sortBySelection, setSortBySelection] = useState('created_at');
     const [sortByCommentCount, setSortByCommentCount] = useState(false);
     const [orderSelection, setOrderSelection] = useState('desc');
@@ -15,7 +15,12 @@ const Reviews = () => {
 
     const userSelectedCategory = searchParams.get('category')
 
-    const params = {category: userSelectedCategory, sort_by: sortBySelection, order: orderSelection};
+    const params = useMemo(() => {
+        return {category: userSelectedCategory}
+    },[userSelectedCategory]);
+
+    params.sort_by = sortBySelection;
+    params.order = orderSelection;
 
     useEffect(() => {
         setIsLoading(true);
@@ -23,7 +28,7 @@ const Reviews = () => {
             setReviews(reviewData)
             setIsLoading(false);
         } ).catch(err => setError(err));
-    }, [userSelectedCategory])
+    }, [params])
 
 
 

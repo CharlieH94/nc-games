@@ -15,7 +15,7 @@ const CommentsList = ({ review_id, error, setError }) => {
             setComments(commentsData);
             setIsLoading(false);
         }).catch(err => setError(err));
-    }, [review_id])
+    }, [review_id, setError])
 
     if (error) return <ErrorPage error={error.message}/>
 

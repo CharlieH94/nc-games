@@ -3,7 +3,7 @@ import { UserContext } from '../contexts/User';
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-    const { user, setUser } = useContext(UserContext)
+    const { setUser } = useContext(UserContext)
     const [loggedInUser, setLoggedInUser] = useState('jessjelly');
     const [password, setPassword] = useState('iAmGroot');
     const [isDisabled, setIsDisabled] = useState(true)
