@@ -31,7 +31,7 @@ const CommentsList = ({ review_id, error, setError }) => {
                         <CommentAdder review_id={review_id} setComments={setComments} />
                     </li>
                     {comments.length === 0 ? (
-                     <p>Be the first to comment!</p>
+                     <li><p className='comment-login'><em>Be the first to comment!</em></p></li>
                     ) 
                         : (
                             comments.map(comment => {

@@ -43,7 +43,7 @@ const CommentAdder = ({ review_id, setComments }) => {
             {user.authorised ? 
                 <div className='new-comment__container'>
                 <textarea type='text' placeholder='Type comment...' id='new-comment' value={newComment.body} onChange={onChange} />
-                <button type='submit'>Post</button>
+                <button type='submit' id='post-btn'>Post</button>
                 </div>
                 : <p className='comment-login'><Link to='/'>Log in</Link> to comment or vote!</p>
             }

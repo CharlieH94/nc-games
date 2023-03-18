@@ -509,7 +509,7 @@ form input {
   border: none;
 }
 
-#comment-adder button {
+#post-btn {
   background-color: #9BB59C;
   color: black;
   border-color: #1E2B29;
