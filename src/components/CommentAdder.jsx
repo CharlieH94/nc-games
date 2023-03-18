@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { postComment } from "../utils/api";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 import { useContext } from 'react';
 import { UserContext } from '../contexts/User';
 import { Link } from "react-router-dom";
@@ -47,7 +46,6 @@ const CommentAdder = ({ review_id, setComments }) => {
                 </div>
                 : <p className='comment-login'><Link to='/'>Log in</Link> to comment or vote!</p>
             }
-            <ToastContainer theme='colored'/>
         </form>
     )
 };

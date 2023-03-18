@@ -1,6 +1,5 @@
 import { deleteCommentById } from "../utils/api";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 import { useContext, useState } from 'react';
 import { UserContext } from '../contexts/User';
 
@@ -33,7 +32,6 @@ const CommentDeleter = ({comment: {comment_id, author}, setComments }) => {
         return (
             <form onSubmit={onSubmit}id='delete-form'>
                 <button type='submit' id='delete-form__btn' disabled={isDisabled}>x</button>
-                <ToastContainer theme='colored'/>
             </form>
         );
     }

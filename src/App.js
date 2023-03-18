@@ -6,6 +6,8 @@ import Login from './components/Login';
 import Reviews from './components/Reviews'
 import ErrorPage from './components/ErrorPage';
 import Nav from './components/Nav';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   let location = useLocation();
@@ -20,6 +22,7 @@ function App() {
         <Route path='/reviews/:review_id' element={<SingleReview />} />
         <Route path='/*' element={<ErrorPage/>} />
       </Routes>
+      <ToastContainer theme='colored'/>
     </div>
   );
 }
